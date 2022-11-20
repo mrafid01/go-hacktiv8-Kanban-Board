@@ -12,6 +12,7 @@ import (
 
 type UserService interface {
 	CreateUser(userInput input.UserRegisterInput) (entity.User, error)
+	CreateAdmin(input input.UserRegisterInput) (entity.User, error)
 	LoginUser(userInput input.UserLoginInput) (string, error)
 	UpdateUser(id_user int, input input.UserUpdateInput) (entity.User, error)
 	DeleteUser(id_user int) (entity.User, error)
@@ -36,6 +37,26 @@ func (s *userService) CreateUser(input input.UserRegisterInput) (entity.User, er
 		Email:    input.Email,
 		Password: string(passwordHash),
 		Role:     "member",
+	}
+
+	userData, err := s.userRepository.CreateUser(user)
+	if err != nil {
+		return entity.User{}, err
+	}
+
+	return userData, nil
+}
+func (s *userService) CreateAdmin(input input.UserRegisterInput) (entity.User, error) {
+	passwordHash, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.MinCost)
+	if err != nil {
+		return entity.User{}, err
+	}
+
+	user := entity.User{
+		FullName: input.FullName,
+		Email:    input.Email,
+		Password: string(passwordHash),
+		Role:     "admin",
 	}
 
 	userData, err := s.userRepository.CreateUser(user)

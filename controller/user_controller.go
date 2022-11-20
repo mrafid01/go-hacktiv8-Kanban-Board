@@ -195,3 +195,52 @@ func (h *userController) DeleteUser(c *gin.Context) {
 		),
 	)
 }
+func (h *userController) RegisterAdmin(c *gin.Context) {
+	var (
+		input input.UserRegisterInput
+	)
+
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	userData, err := h.userService.CreateAdmin(input)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	userResponse := response.UserRegisterResponse{
+		ID:        userData.ID,
+		FullName:  userData.FullName,
+		Email:     userData.Email,
+		CreatedAt: userData.CreatedAt,
+	}
+
+	c.JSON(
+		http.StatusCreated,
+		helper.NewResponse(
+			http.StatusCreated,
+			"created",
+			userResponse,
+		),
+	)
+}
