@@ -1,6 +1,10 @@
 package controller
 
 import (
+	"net/http"
+	"project3/helper"
+	"project3/model/input"
+	"project3/model/response"
 	"project3/service"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +18,55 @@ func NewUserController(userService service.UserService) *userController {
 	return &userController{userService}
 }
 
-func (h *userController) RegisterUser(c *gin.Context) {}
-func (h *userController) LoginUser(c *gin.Context)    {}
-func (h *userController) UpdateUser(c *gin.Context)   {}
-func (h *userController) DeleteUser(c *gin.Context)   {}
+func (h *userController) RegisterUser(c *gin.Context) {
+	var (
+		input input.UserRegisterInput
+	)
+
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	userData, err := h.userService.CreateUser(input)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	userResponse := response.UserRegisterResponse{
+		ID:        userData.ID,
+		FullName:  userData.FullName,
+		Email:     userData.Email,
+		CreatedAt: userData.CreatedAt,
+	}
+
+	c.JSON(
+		http.StatusCreated,
+		helper.NewResponse(
+			http.StatusCreated,
+			"created",
+			userResponse,
+		),
+	)
+}
+func (h *userController) LoginUser(c *gin.Context)  {}
+func (h *userController) UpdateUser(c *gin.Context) {}
+func (h *userController) DeleteUser(c *gin.Context) {}

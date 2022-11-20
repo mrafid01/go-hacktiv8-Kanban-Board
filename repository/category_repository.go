@@ -21,11 +21,18 @@ func NewCategoryRepository(db *gorm.DB) *categoryRepository {
 	return &categoryRepository{db}
 }
 
-func (r *categoryRepository) CreateCategory(category entity.Category) (entity.Category, error) {}
-
-func (r *categoryRepository) FindByID(id_category int) (entity.Category, error) {}
-
-func (r *categoryRepository) Update(id_category int, category entity.Category) (entity.Category, error) {
+func (r *categoryRepository) CreateCategory(category entity.Category) (entity.Category, error) {
+	return entity.Category{}, nil
 }
 
-func (r *categoryRepository) Delete(id_category int) (entity.Category, error) {}
+func (r *categoryRepository) FindByID(id_category int) (entity.Category, error) {
+	return entity.Category{}, nil
+}
+
+func (r *categoryRepository) Update(id_category int, category entity.Category) (entity.Category, error) {
+	return entity.Category{}, nil
+}
+
+func (r *categoryRepository) Delete(id_category int) (entity.Category, error) {
+	return entity.Category{}, nil
+}

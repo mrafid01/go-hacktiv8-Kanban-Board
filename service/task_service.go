@@ -23,11 +23,17 @@ func NewTaskService(taskRepository repository.TaskRepository) *taskService {
 	return &taskService{taskRepository}
 }
 
-func (s *taskService) CreateTask(input input.TaskCreateInput) (entity.Task, error)              {}
-func (s *taskService) GetTaskByID(id_task int) (entity.Task, error)                             {}
-func (s *taskService) UpdateTask(id_task int, input input.TaskUpdateInput) (entity.Task, error) {}
+func (s *taskService) CreateTask(input input.TaskCreateInput) (entity.Task, error) {
+	return entity.Task{}, nil
+}
+func (s *taskService) GetTaskByID(id_task int) (entity.Task, error) { return entity.Task{}, nil }
+func (s *taskService) UpdateTask(id_task int, input input.TaskUpdateInput) (entity.Task, error) {
+	return entity.Task{}, nil
+}
 func (s *taskService) PatchStatusTask(id_task int, input input.TaskPatchStatusInput) (entity.Task, error) {
+	return entity.Task{}, nil
 }
 func (s *taskService) PatchCategoryTask(id_task int, input input.TaskPatchCategoryInput) (entity.Task, error) {
+	return entity.Task{}, nil
 }
-func (s *taskService) DeleteTask(id_task int) (entity.Task, error) {}
+func (s *taskService) DeleteTask(id_task int) (entity.Task, error) { return entity.Task{}, nil }
