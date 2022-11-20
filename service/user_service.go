@@ -84,4 +84,19 @@ func (s *userService) UpdateUser(id_user int, input input.UserUpdateInput) (enti
 
 	return userData, nil
 }
-func (s *userService) DeleteUser(id_user int) (entity.User, error) { return entity.User{}, nil }
+func (s *userService) DeleteUser(id_user int) (entity.User, error) {
+	userData, err := s.userRepository.FindByID(id_user)
+	if err != nil {
+		return entity.User{}, err
+	}
+	if userData.ID == 0 {
+		return entity.User{}, errors.New("data not found")
+	}
+
+	userData, err = s.userRepository.Delete(id_user)
+	if err != nil {
+		return entity.User{}, err
+	}
+
+	return userData, nil
+}

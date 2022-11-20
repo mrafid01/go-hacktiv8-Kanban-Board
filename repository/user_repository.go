@@ -68,7 +68,6 @@ func (r *userRepository) Delete(ID int) (entity.User, error) {
 	}
 
 	err := r.db.Where("id = ?", ID).Delete(&userDeleted).Error
-
 	if err != nil {
 		return entity.User{}, err
 	}
