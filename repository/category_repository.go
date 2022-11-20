@@ -22,7 +22,12 @@ func NewCategoryRepository(db *gorm.DB) *categoryRepository {
 }
 
 func (r *categoryRepository) CreateCategory(category entity.Category) (entity.Category, error) {
-	return entity.Category{}, nil
+	err := r.db.Create(&category).Error
+	if err != nil {
+		return category, err
+	}
+
+	return category, nil
 }
 
 func (r *categoryRepository) FindByID(id_category int) (entity.Category, error) {
