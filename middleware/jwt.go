@@ -25,8 +25,8 @@ func GenerateToken(userID int, role string) (string, error) {
 	return tokenString, nil
 }
 
-func ValidateToken(tokenString string) (uint, string, error) {
-	var userID uint
+func ValidateToken(tokenString string) (int, string, error) {
+	var userID int
 	var userRole string
 	token, err := jwt.Parse(tokenString, func(t *jwt.Token) (interface{}, error) {
 		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
@@ -37,7 +37,7 @@ func ValidateToken(tokenString string) (uint, string, error) {
 	})
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		userID = uint(claims["id_user"].(float64))
+		userID = int(claims["id_user"].(float64))
 		userRole = string(claims["role_user"].(string))
 		return userID, userRole, nil
 	} else {

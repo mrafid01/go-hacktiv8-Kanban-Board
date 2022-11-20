@@ -113,5 +113,56 @@ func (h *userController) LoginUser(c *gin.Context) {
 		),
 	)
 }
-func (h *userController) UpdateUser(c *gin.Context) {}
+func (h *userController) UpdateUser(c *gin.Context) {
+	var (
+		input input.UserUpdateInput
+	)
+
+	id_user := c.MustGet("currentUser").(int)
+
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	userData, err := h.userService.UpdateUser(id_user, input)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	userResponse := response.UserUpdateResponse{
+		ID:        userData.ID,
+		FullName:  userData.FullName,
+		Email:     userData.Email,
+		UpdatedAt: userData.UpdatedAt,
+	}
+
+	c.JSON(
+		http.StatusOK,
+		helper.NewResponse(
+			http.StatusOK,
+			"ok",
+			userResponse,
+		),
+	)
+}
+
 func (h *userController) DeleteUser(c *gin.Context) {}

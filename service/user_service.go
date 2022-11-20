@@ -12,7 +12,6 @@ import (
 
 type UserService interface {
 	CreateUser(userInput input.UserRegisterInput) (entity.User, error)
-	GetUserByID(id_user int) (entity.User, error)
 	LoginUser(userInput input.UserLoginInput) (string, error)
 	UpdateUser(id_user int, input input.UserUpdateInput) (entity.User, error)
 	DeleteUser(id_user int) (entity.User, error)
@@ -46,7 +45,6 @@ func (s *userService) CreateUser(input input.UserRegisterInput) (entity.User, er
 
 	return userData, nil
 }
-func (s *userService) GetUserByID(id_user int) (entity.User, error) { return entity.User{}, nil }
 func (s *userService) LoginUser(userInput input.UserLoginInput) (string, error) {
 	userData, err := s.userRepository.FindByEmail(userInput.Email)
 	if err != nil {
@@ -69,6 +67,21 @@ func (s *userService) LoginUser(userInput input.UserLoginInput) (string, error) 
 	return token, nil
 }
 func (s *userService) UpdateUser(id_user int, input input.UserUpdateInput) (entity.User, error) {
-	return entity.User{}, nil
+	user := entity.User{
+		FullName: input.FullName,
+		Email:    input.Email,
+	}
+
+	_, err := s.userRepository.Update(id_user, user)
+	if err != nil {
+		return entity.User{}, err
+	}
+
+	userData, err := s.userRepository.FindByID(id_user)
+	if err != nil {
+		return entity.User{}, err
+	}
+
+	return userData, nil
 }
 func (s *userService) DeleteUser(id_user int) (entity.User, error) { return entity.User{}, nil }

@@ -12,6 +12,6 @@ type UserLoginInput struct {
 }
 
 type UserUpdateInput struct {
-	FullName string `json:"full_name"`
-	Email    string `json:"email"`
+	FullName string `json:"full_name" binding:"required"`
+	Email    string `json:"email" binding:"required,email"`
 }
