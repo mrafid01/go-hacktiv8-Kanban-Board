@@ -23,14 +23,20 @@ func NewTaskRepository(db *gorm.DB) *taskRepository {
 	return &taskRepository{db}
 }
 
-func (r *taskRepository) Create(task entity.Task) (entity.Task, error) {}
+func (r *taskRepository) Create(task entity.Task) (entity.Task, error) { return entity.Task{}, nil }
 
-func (r *taskRepository) FindByID(id_task int) (entity.Task, error) {}
+func (r *taskRepository) FindByID(id_task int) (entity.Task, error) { return entity.Task{}, nil }
 
-func (r *taskRepository) Update(id_task int, task entity.Task) (entity.Task, error) {}
+func (r *taskRepository) Update(id_task int, task entity.Task) (entity.Task, error) {
+	return entity.Task{}, nil
+}
 
-func (r *taskRepository) PatchStatus(id_task int, task entity.Task) (entity.Task, error) {}
+func (r *taskRepository) PatchStatus(id_task int, task entity.Task) (entity.Task, error) {
+	return entity.Task{}, nil
+}
 
-func (r *taskRepository) PatchCategory(id_task int, task entity.Task) (entity.Task, error) {}
+func (r *taskRepository) PatchCategory(id_task int, task entity.Task) (entity.Task, error) {
+	return entity.Task{}, nil
+}
 
-func (r *taskRepository) Delete(id_task int) (entity.Task, error) {}
+func (r *taskRepository) Delete(id_task int) (entity.Task, error) { return entity.Task{}, nil }

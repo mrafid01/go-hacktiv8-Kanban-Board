@@ -21,8 +21,15 @@ func NewCategoryService(categoryRepository repository.CategoryRepository) *categ
 	return &categoryService{categoryRepository}
 }
 
-func (s *categoryService) CreateCategory(input input.CategoryCreateInput) (entity.Category, error) {}
-func (s *categoryService) GetCategoryByID(id_category int) (entity.Category, error)                {}
-func (s *categoryService) PatchCategory(id_category int, input input.CategoryPatchInput) (entity.Category, error) {
+func (s *categoryService) CreateCategory(input input.CategoryCreateInput) (entity.Category, error) {
+	return entity.Category{}, nil
 }
-func (s *categoryService) DeleteCategory(id_category int) (entity.Category, error) {}
+func (s *categoryService) GetCategoryByID(id_category int) (entity.Category, error) {
+	return entity.Category{}, nil
+}
+func (s *categoryService) PatchCategory(id_category int, input input.CategoryPatchInput) (entity.Category, error) {
+	return entity.Category{}, nil
+}
+func (s *categoryService) DeleteCategory(id_category int) (entity.Category, error) {
+	return entity.Category{}, nil
+}
