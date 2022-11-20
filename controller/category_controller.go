@@ -63,11 +63,77 @@ func (h *categoryController) CreateCategory(c *gin.Context) {
 		http.StatusCreated,
 		helper.NewResponse(
 			http.StatusCreated,
-			"ok",
+			"created",
 			categoryResponse,
 		),
 	)
 }
-func (h *categoryController) GetCategory(c *gin.Context)    {}
+func (h *categoryController) GetCategory(c *gin.Context) {
+	var (
+		allTasks      []response.CategoryTask
+		allCategories []response.CategoryGetResponse
+	)
+
+	_ = c.MustGet("currentUser").(int)
+
+	categoryData, err := h.categoryService.GetAllCategory()
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+	for _, dataCategory := range categoryData {
+		tasksData, err := h.categoryService.GetTasksByCategoryID(dataCategory.ID)
+		if err != nil {
+			errors := helper.GetErrorData(err)
+			c.JSON(
+				http.StatusUnprocessableEntity,
+				helper.NewErrorResponse(
+					http.StatusUnprocessableEntity,
+					"failed",
+					errors,
+				),
+			)
+			return
+		}
+		for _, dataTask := range tasksData {
+			allTasksTmp := response.CategoryTask{
+				ID:          dataTask.ID,
+				Title:       dataTask.Title,
+				Description: dataTask.Description,
+				UserID:      dataTask.UserID,
+				CategoryID:  dataTask.CategoryID,
+				CreatedAt:   dataTask.CreatedAt,
+				UpdatedAt:   dataTask.UpdatedAt,
+			}
+			allTasks = append(allTasks, allTasksTmp)
+		}
+		allCategoriesTmp := response.CategoryGetResponse{
+			ID:        dataCategory.ID,
+			Type:      dataCategory.Type,
+			UpdatedAt: dataCategory.UpdatedAt,
+			CreatedAt: dataCategory.CreatedAt,
+			Tasks:     allTasks,
+		}
+
+		allCategories = append(allCategories, allCategoriesTmp)
+	}
+
+	c.JSON(
+		http.StatusOK,
+		helper.NewResponse(
+			http.StatusOK,
+			"ok",
+			allCategories,
+		),
+	)
+}
 func (h *categoryController) PatchCategory(c *gin.Context)  {}
 func (h *categoryController) DeleteCategory(c *gin.Context) {}

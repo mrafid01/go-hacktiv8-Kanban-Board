@@ -8,7 +8,9 @@ import (
 
 type CategoryRepository interface {
 	CreateCategory(category entity.Category) (entity.Category, error)
+	GetAll() ([]entity.Category, error)
 	FindByID(id_category int) (entity.Category, error)
+	GetTasksByCategoryID(id_category int) ([]entity.Task, error)
 	Update(id_category int, category entity.Category) (entity.Category, error)
 	Delete(id_category int) (entity.Category, error)
 }
@@ -30,10 +32,30 @@ func (r *categoryRepository) CreateCategory(category entity.Category) (entity.Ca
 	return category, nil
 }
 
+func (r *categoryRepository) GetAll() ([]entity.Category, error) {
+	var categories []entity.Category
+
+	err := r.db.Find(&categories).Error
+	if err != nil {
+		return []entity.Category{}, err
+	}
+
+	return categories, nil
+}
+
 func (r *categoryRepository) FindByID(id_category int) (entity.Category, error) {
 	return entity.Category{}, nil
 }
+func (r *categoryRepository) GetTasksByCategoryID(id_category int) ([]entity.Task, error) {
+	var tasks []entity.Task
 
+	err := r.db.Where("category_id = ?", id_category).Find(&tasks).Error
+	if err != nil {
+		return []entity.Task{}, err
+	}
+
+	return tasks, nil
+}
 func (r *categoryRepository) Update(id_category int, category entity.Category) (entity.Category, error) {
 	return entity.Category{}, nil
 }
