@@ -1,6 +1,8 @@
 package service
 
 import (
+	"errors"
+	"project3/middleware"
 	"project3/model/entity"
 	"project3/model/input"
 	"project3/repository"
@@ -10,8 +12,8 @@ import (
 
 type UserService interface {
 	CreateUser(userInput input.UserRegisterInput) (entity.User, error)
-	GetUserByEmail(email string) (entity.User, error)
 	GetUserByID(id_user int) (entity.User, error)
+	LoginUser(userInput input.UserLoginInput) (string, error)
 	UpdateUser(id_user int, input input.UserUpdateInput) (entity.User, error)
 	DeleteUser(id_user int) (entity.User, error)
 }
@@ -44,8 +46,28 @@ func (s *userService) CreateUser(input input.UserRegisterInput) (entity.User, er
 
 	return userData, nil
 }
-func (s *userService) GetUserByEmail(email string) (entity.User, error) { return entity.User{}, nil }
-func (s *userService) GetUserByID(id_user int) (entity.User, error)     { return entity.User{}, nil }
+func (s *userService) GetUserByID(id_user int) (entity.User, error) { return entity.User{}, nil }
+func (s *userService) LoginUser(userInput input.UserLoginInput) (string, error) {
+	userData, err := s.userRepository.FindByEmail(userInput.Email)
+	if err != nil {
+		return "", err
+	}
+	if userData.ID == 0 {
+		return "", errors.New("user not found")
+	}
+
+	err = bcrypt.CompareHashAndPassword([]byte(userData.Password), []byte(userInput.Password))
+	if err != nil {
+		return "", errors.New("wrong password")
+	}
+
+	token, err := middleware.GenerateToken(userData.ID, userData.Role)
+	if err != nil {
+		return "", err
+	}
+
+	return token, nil
+}
 func (s *userService) UpdateUser(id_user int, input input.UserUpdateInput) (entity.User, error) {
 	return entity.User{}, nil
 }

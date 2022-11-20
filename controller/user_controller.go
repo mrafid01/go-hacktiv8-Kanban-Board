@@ -67,6 +67,51 @@ func (h *userController) RegisterUser(c *gin.Context) {
 		),
 	)
 }
-func (h *userController) LoginUser(c *gin.Context)  {}
+func (h *userController) LoginUser(c *gin.Context) {
+	var (
+		input input.UserLoginInput
+	)
+
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	token, err := h.userService.LoginUser(input)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	userResponse := response.UserLoginResponse{
+		Token: token,
+	}
+
+	c.JSON(
+		http.StatusOK,
+		helper.NewResponse(
+			http.StatusOK,
+			"ok",
+			userResponse,
+		),
+	)
+}
 func (h *userController) UpdateUser(c *gin.Context) {}
 func (h *userController) DeleteUser(c *gin.Context) {}

@@ -41,10 +41,6 @@ func (r *userRepository) FindByEmail(email string) (entity.User, error) {
 		return user, err
 	}
 
-	if user.ID == 0 {
-		return entity.User{}, nil
-	}
-
 	return user, nil
 }
 
