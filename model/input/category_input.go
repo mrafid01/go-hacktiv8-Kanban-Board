@@ -7,3 +7,7 @@ type CategoryCreateInput struct {
 type CategoryPatchInput struct {
 	Type string `json:"type" binding:"required"`
 }
+
+type CategoryIdUri struct {
+	ID int `uri:"id" binding:"required"`
+}

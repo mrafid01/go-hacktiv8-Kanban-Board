@@ -11,7 +11,7 @@ type CategoryService interface {
 	CreateCategory(role_user string, input input.CategoryCreateInput) (entity.Category, error)
 	GetAllCategory() ([]entity.Category, error)
 	GetTasksByCategoryID(id_category int) ([]entity.Task, error)
-	PatchCategory(id_category int, input input.CategoryPatchInput) (entity.Category, error)
+	PatchCategory(role_user string, id_category int, input input.CategoryPatchInput) (entity.Category, error)
 	DeleteCategory(id_category int) (entity.Category, error)
 }
 
@@ -56,8 +56,26 @@ func (s *categoryService) GetTasksByCategoryID(id_category int) ([]entity.Task, 
 	return tasks, nil
 }
 
-func (s *categoryService) PatchCategory(id_category int, input input.CategoryPatchInput) (entity.Category, error) {
-	return entity.Category{}, nil
+func (s *categoryService) PatchCategory(role_user string, id_category int, input input.CategoryPatchInput) (entity.Category, error) {
+	if role_user != "admin" {
+		return entity.Category{}, errors.New("you are not admin")
+	}
+
+	category := entity.Category{
+		Type: input.Type,
+	}
+
+	_, err := s.categoryRepository.PatchType(id_category, category)
+	if err != nil {
+		return entity.Category{}, err
+	}
+
+	categoryData, err := s.categoryRepository.GetCategoryById(id_category)
+	if err != nil {
+		return entity.Category{}, err
+	}
+
+	return categoryData, nil
 }
 func (s *categoryService) DeleteCategory(id_category int) (entity.Category, error) {
 	return entity.Category{}, nil
