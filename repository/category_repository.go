@@ -9,7 +9,6 @@ import (
 type CategoryRepository interface {
 	CreateCategory(category entity.Category) (entity.Category, error)
 	GetAll() ([]entity.Category, error)
-	FindByID(id_category int) (entity.Category, error)
 	GetTasksByCategoryID(id_category int) ([]entity.Task, error)
 	PatchType(id_category int, category entity.Category) (entity.Category, error)
 	GetCategoryById(id_category int) (entity.Category, error)
@@ -32,7 +31,6 @@ func (r *categoryRepository) CreateCategory(category entity.Category) (entity.Ca
 
 	return category, nil
 }
-
 func (r *categoryRepository) GetAll() ([]entity.Category, error) {
 	var categories []entity.Category
 
@@ -42,10 +40,6 @@ func (r *categoryRepository) GetAll() ([]entity.Category, error) {
 	}
 
 	return categories, nil
-}
-
-func (r *categoryRepository) FindByID(id_category int) (entity.Category, error) {
-	return entity.Category{}, nil
 }
 func (r *categoryRepository) GetTasksByCategoryID(id_category int) ([]entity.Task, error) {
 	var tasks []entity.Task
@@ -65,7 +59,6 @@ func (r *categoryRepository) PatchType(id_category int, category entity.Category
 
 	return category, nil
 }
-
 func (r *categoryRepository) GetCategoryById(id_category int) (entity.Category, error) {
 	var category entity.Category
 
