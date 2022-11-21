@@ -74,6 +74,9 @@ func (s *categoryService) PatchCategory(role_user string, id_category int, input
 	if err != nil {
 		return entity.Category{}, err
 	}
+	if categoryData.ID == 0 {
+		return entity.Category{}, errors.New("data not found")
+	}
 
 	return categoryData, nil
 }
