@@ -8,6 +8,7 @@ import (
 
 type TaskRepository interface {
 	Create(task entity.Task) (entity.Task, error)
+	FindCategoryByCategoryId(id_category int) (entity.Category, error)
 	FindByID(id_task int) (entity.Task, error)
 	Update(id_task int, task entity.Task) (entity.Task, error)
 	PatchStatus(id_task int, task entity.Task) (entity.Task, error)
@@ -23,7 +24,24 @@ func NewTaskRepository(db *gorm.DB) *taskRepository {
 	return &taskRepository{db}
 }
 
-func (r *taskRepository) Create(task entity.Task) (entity.Task, error) { return entity.Task{}, nil }
+func (r *taskRepository) Create(task entity.Task) (entity.Task, error) {
+	err := r.db.Preload("User").Preload("Category").Create(&task).Error
+	if err != nil {
+		return task, err
+	}
+
+	return task, nil
+}
+func (r *taskRepository) FindCategoryByCategoryId(id_category int) (entity.Category, error) {
+	var category entity.Category
+
+	err := r.db.Where("id = ?", id_category).Find(&category).Error
+	if err != nil {
+		return entity.Category{}, err
+	}
+
+	return category, nil
+}
 
 func (r *taskRepository) FindByID(id_task int) (entity.Task, error) { return entity.Task{}, nil }
 
