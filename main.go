@@ -43,6 +43,8 @@ func main() {
 	router.POST("/users/login", userController.LoginUser)
 	router.PUT("/users/update-account", middleware.AuthMiddleware, userController.UpdateUser)
 	router.DELETE("/users/delete-account", middleware.AuthMiddleware, userController.DeleteUser)
+	// Create Admin
+	router.POST("/users/admin", userController.RegisterAdmin)
 
 	// Category
 	router.POST("/categories", middleware.AuthMiddleware, categoryController.CreateCategory)
