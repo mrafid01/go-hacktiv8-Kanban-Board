@@ -77,5 +77,12 @@ func (r *categoryRepository) GetCategoryById(id_category int) (entity.Category, 
 	return category, nil
 }
 func (r *categoryRepository) Delete(id_category int) (entity.Category, error) {
-	return entity.Category{}, nil
+	var category entity.Category
+
+	err := r.db.Where("id = ?", id_category).Delete(&category).Error
+	if err != nil {
+		return entity.Category{}, err
+	}
+
+	return category, nil
 }

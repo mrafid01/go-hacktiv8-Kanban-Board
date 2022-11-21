@@ -201,4 +201,51 @@ func (h *categoryController) PatchCategory(c *gin.Context) {
 		),
 	)
 }
-func (h *categoryController) DeleteCategory(c *gin.Context) {}
+func (h *categoryController) DeleteCategory(c *gin.Context) {
+	var (
+		uri input.CategoryIdUri
+	)
+
+	role_user := c.MustGet("roleUser").(string)
+
+	err := c.ShouldBindUri(&uri)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	_, err = h.categoryService.DeleteCategory(role_user, uri.ID)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	categoryResponse := response.CategoryDeleteResponse{
+		Message: "Category has been successfully deleted",
+	}
+
+	c.JSON(
+		http.StatusOK,
+		helper.NewResponse(
+			http.StatusOK,
+			"ok",
+			categoryResponse,
+		),
+	)
+}

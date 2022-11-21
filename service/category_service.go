@@ -12,7 +12,7 @@ type CategoryService interface {
 	GetAllCategory() ([]entity.Category, error)
 	GetTasksByCategoryID(id_category int) ([]entity.Task, error)
 	PatchCategory(role_user string, id_category int, input input.CategoryPatchInput) (entity.Category, error)
-	DeleteCategory(id_category int) (entity.Category, error)
+	DeleteCategory(role_user string, id_category int) (entity.Category, error)
 }
 
 type categoryService struct {
@@ -77,6 +77,23 @@ func (s *categoryService) PatchCategory(role_user string, id_category int, input
 
 	return categoryData, nil
 }
-func (s *categoryService) DeleteCategory(id_category int) (entity.Category, error) {
-	return entity.Category{}, nil
+func (s *categoryService) DeleteCategory(role_user string, id_category int) (entity.Category, error) {
+	if role_user != "admin" {
+		return entity.Category{}, errors.New("you are not admin")
+	}
+
+	categoryData, err := s.categoryRepository.GetCategoryById(id_category)
+	if err != nil {
+		return entity.Category{}, err
+	}
+	if categoryData.ID == 0 {
+		return entity.Category{}, errors.New("data not found")
+	}
+
+	categoryData, err = s.categoryRepository.Delete(id_category)
+	if err != nil {
+		return entity.Category{}, err
+	}
+
+	return categoryData, nil
 }
