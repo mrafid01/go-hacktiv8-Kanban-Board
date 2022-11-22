@@ -68,6 +68,7 @@ func (h *categoryController) CreateCategory(c *gin.Context) {
 		),
 	)
 }
+
 func (h *categoryController) GetCategory(c *gin.Context) {
 	var (
 		allTasks      []response.CategoryTask
@@ -125,6 +126,7 @@ func (h *categoryController) GetCategory(c *gin.Context) {
 		}
 
 		allCategories = append(allCategories, allCategoriesTmp)
+		allTasks = []response.CategoryTask{}
 	}
 
 	c.JSON(
@@ -136,6 +138,7 @@ func (h *categoryController) GetCategory(c *gin.Context) {
 		),
 	)
 }
+
 func (h *categoryController) PatchCategory(c *gin.Context) {
 	var (
 		inputBody input.CategoryPatchInput
@@ -201,6 +204,7 @@ func (h *categoryController) PatchCategory(c *gin.Context) {
 		),
 	)
 }
+
 func (h *categoryController) DeleteCategory(c *gin.Context) {
 	var (
 		uri input.CategoryIdUri

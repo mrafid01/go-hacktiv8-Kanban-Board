@@ -31,6 +31,7 @@ func (r *categoryRepository) CreateCategory(category entity.Category) (entity.Ca
 
 	return category, nil
 }
+
 func (r *categoryRepository) GetAll() ([]entity.Category, error) {
 	var categories []entity.Category
 
@@ -41,6 +42,7 @@ func (r *categoryRepository) GetAll() ([]entity.Category, error) {
 
 	return categories, nil
 }
+
 func (r *categoryRepository) GetTasksByCategoryID(id_category int) ([]entity.Task, error) {
 	var tasks []entity.Task
 
@@ -51,6 +53,7 @@ func (r *categoryRepository) GetTasksByCategoryID(id_category int) ([]entity.Tas
 
 	return tasks, nil
 }
+
 func (r *categoryRepository) PatchType(id_category int, category entity.Category) (entity.Category, error) {
 	err := r.db.Where("id = ?", id_category).Updates(&category).Error
 	if err != nil {
@@ -59,6 +62,7 @@ func (r *categoryRepository) PatchType(id_category int, category entity.Category
 
 	return category, nil
 }
+
 func (r *categoryRepository) GetCategoryById(id_category int) (entity.Category, error) {
 	var category entity.Category
 
@@ -69,6 +73,7 @@ func (r *categoryRepository) GetCategoryById(id_category int) (entity.Category, 
 
 	return category, nil
 }
+
 func (r *categoryRepository) Delete(id_category int) (entity.Category, error) {
 	var category entity.Category
 

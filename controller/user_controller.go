@@ -67,6 +67,7 @@ func (h *userController) RegisterUser(c *gin.Context) {
 		),
 	)
 }
+
 func (h *userController) LoginUser(c *gin.Context) {
 	var (
 		input input.UserLoginInput
@@ -113,6 +114,7 @@ func (h *userController) LoginUser(c *gin.Context) {
 		),
 	)
 }
+
 func (h *userController) UpdateUser(c *gin.Context) {
 	var (
 		input input.UserUpdateInput
@@ -195,6 +197,7 @@ func (h *userController) DeleteUser(c *gin.Context) {
 		),
 	)
 }
+
 func (h *userController) RegisterAdmin(c *gin.Context) {
 	var (
 		input input.UserRegisterInput
