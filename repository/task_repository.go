@@ -12,7 +12,6 @@ type TaskRepository interface {
 	FindAll() ([]entity.Task, error)
 	FindByID(id_task int) (entity.Task, error)
 	Update(id_task int, task entity.Task) (entity.Task, error)
-	PatchCategory(id_task int, task entity.Task) (entity.Task, error)
 	Delete(id_task int) (entity.Task, error)
 }
 
@@ -73,10 +72,6 @@ func (r *taskRepository) Update(id_task int, task entity.Task) (entity.Task, err
 	}
 
 	return task, nil
-}
-
-func (r *taskRepository) PatchCategory(id_task int, task entity.Task) (entity.Task, error) {
-	return entity.Task{}, nil
 }
 
 func (r *taskRepository) Delete(id_task int) (entity.Task, error) { return entity.Task{}, nil }
