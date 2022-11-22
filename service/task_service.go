@@ -41,21 +41,21 @@ func (s *taskService) CreateTask(id_user int, input input.TaskCreateInput) (enti
 		Status:      false,
 	}
 
-	TaskData, err := s.taskRepository.Create(task)
+	taskData, err := s.taskRepository.Create(task)
 	if err != nil {
 		return entity.Task{}, err
 	}
 
-	return TaskData, nil
+	return taskData, nil
 }
 
 func (s *taskService) GetAllTask() ([]entity.Task, error) {
-	tasks, err := s.taskRepository.FindAll()
+	tasksData, err := s.taskRepository.FindAll()
 	if err != nil {
 		return []entity.Task{}, err
 	}
 
-	return tasks, nil
+	return tasksData, nil
 }
 
 func (s *taskService) UpdateTask(id_user int, id_task int, input input.TaskUpdateInput) (entity.Task, error) {
