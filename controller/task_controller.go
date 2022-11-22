@@ -56,7 +56,7 @@ func (h *taskController) CreateTask(c *gin.Context) {
 	taskResponse := response.TaskCreateResponse{
 		ID:          taskData.ID,
 		Title:       taskData.Title,
-		Status:      taskData.Status,
+		Status:      *taskData.Status,
 		Description: taskData.Description,
 		UserID:      taskData.UserID,
 		CategoryID:  taskData.CategoryID,
@@ -99,7 +99,7 @@ func (h *taskController) GetTask(c *gin.Context) {
 		allTasksTmp = response.TaskGetResponse{
 			ID:          data.ID,
 			Title:       data.Title,
-			Status:      data.Status,
+			Status:      *data.Status,
 			Description: data.Description,
 			UserID:      data.UserID,
 			CategoryID:  data.CategoryID,
@@ -177,7 +177,7 @@ func (h *taskController) UpdateTask(c *gin.Context) {
 		ID:          taskData.ID,
 		Title:       taskData.Title,
 		Description: taskData.Description,
-		Status:      taskData.Status,
+		Status:      *taskData.Status,
 		UserID:      taskData.UserID,
 		CategoryID:  taskData.CategoryID,
 		UpdatedAt:   taskData.UpdatedAt,
@@ -193,7 +193,75 @@ func (h *taskController) UpdateTask(c *gin.Context) {
 	)
 }
 
-func (h *taskController) PatchStatusTask(c *gin.Context) {}
+func (h *taskController) PatchStatusTask(c *gin.Context) {
+	var (
+		inputBody input.TaskPatchStatusInput
+		uri       input.TaskIdUri
+	)
+
+	id_user := c.MustGet("currentUser").(int)
+
+	err := c.ShouldBindJSON(&inputBody)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	err = c.ShouldBindUri(&uri)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	taskData, err := h.taskService.PatchStatusTask(id_user, uri.ID, inputBody)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	taskResponse := response.TaskPatchStatusResponse{
+		ID:          taskData.ID,
+		Title:       taskData.Title,
+		Description: taskData.Description,
+		Status:      *taskData.Status,
+		UserID:      taskData.UserID,
+		CategoryID:  taskData.CategoryID,
+		UpdatedAt:   taskData.UpdatedAt,
+	}
+
+	c.JSON(
+		http.StatusOK,
+		helper.NewResponse(
+			http.StatusOK,
+			"ok",
+			taskResponse,
+		),
+	)
+}
 
 func (h *taskController) PatchCategoryTask(c *gin.Context) {}
 

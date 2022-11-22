@@ -6,7 +6,7 @@ type Task struct {
 	ID          int `gorm:"primarykey"`
 	Title       string
 	Description string
-	Status      bool
+	Status      *bool
 	UserID      int
 	CategoryID  int
 	CreatedAt   time.Time

@@ -12,7 +12,7 @@ type TaskUpdateInput struct {
 }
 
 type TaskPatchStatusInput struct {
-	Status bool `json:"status" binding:"required"`
+	Status *bool `json:"status" binding:"required"`
 }
 
 type TaskPatchCategoryInput struct {
