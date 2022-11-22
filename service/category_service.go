@@ -39,6 +39,7 @@ func (s *categoryService) CreateCategory(role_user string, input input.CategoryC
 
 	return categoryData, nil
 }
+
 func (s *categoryService) GetAllCategory() ([]entity.Category, error) {
 	categories, err := s.categoryRepository.GetAll()
 	if err != nil {
@@ -47,6 +48,7 @@ func (s *categoryService) GetAllCategory() ([]entity.Category, error) {
 
 	return categories, nil
 }
+
 func (s *categoryService) GetTasksByCategoryID(id_category int) ([]entity.Task, error) {
 	tasks, err := s.categoryRepository.GetTasksByCategoryID(id_category)
 	if err != nil {
@@ -75,11 +77,12 @@ func (s *categoryService) PatchCategory(role_user string, id_category int, input
 		return entity.Category{}, err
 	}
 	if categoryData.ID == 0 {
-		return entity.Category{}, errors.New("data not found")
+		return entity.Category{}, errors.New("category not found")
 	}
 
 	return categoryData, nil
 }
+
 func (s *categoryService) DeleteCategory(role_user string, id_category int) (entity.Category, error) {
 	if role_user != "admin" {
 		return entity.Category{}, errors.New("you are not admin")
@@ -90,7 +93,7 @@ func (s *categoryService) DeleteCategory(role_user string, id_category int) (ent
 		return entity.Category{}, err
 	}
 	if categoryData.ID == 0 {
-		return entity.Category{}, errors.New("data not found")
+		return entity.Category{}, errors.New("category not found")
 	}
 
 	categoryData, err = s.categoryRepository.Delete(id_category)

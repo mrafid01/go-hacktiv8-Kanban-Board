@@ -46,6 +46,7 @@ func (s *userService) CreateUser(input input.UserRegisterInput) (entity.User, er
 
 	return userData, nil
 }
+
 func (s *userService) CreateAdmin(input input.UserRegisterInput) (entity.User, error) {
 	passwordHash, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.MinCost)
 	if err != nil {
@@ -66,6 +67,7 @@ func (s *userService) CreateAdmin(input input.UserRegisterInput) (entity.User, e
 
 	return userData, nil
 }
+
 func (s *userService) LoginUser(userInput input.UserLoginInput) (string, error) {
 	userData, err := s.userRepository.FindByEmail(userInput.Email)
 	if err != nil {
@@ -87,6 +89,7 @@ func (s *userService) LoginUser(userInput input.UserLoginInput) (string, error) 
 
 	return token, nil
 }
+
 func (s *userService) UpdateUser(id_user int, input input.UserUpdateInput) (entity.User, error) {
 	user := entity.User{
 		FullName: input.FullName,
@@ -105,13 +108,14 @@ func (s *userService) UpdateUser(id_user int, input input.UserUpdateInput) (enti
 
 	return userData, nil
 }
+
 func (s *userService) DeleteUser(id_user int) (entity.User, error) {
 	userData, err := s.userRepository.FindByID(id_user)
 	if err != nil {
 		return entity.User{}, err
 	}
 	if userData.ID == 0 {
-		return entity.User{}, errors.New("data not found")
+		return entity.User{}, errors.New("user not found")
 	}
 
 	userData, err = s.userRepository.Delete(id_user)

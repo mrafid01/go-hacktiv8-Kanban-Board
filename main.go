@@ -57,7 +57,7 @@ func main() {
 	router.GET("/tasks", middleware.AuthMiddleware, taskController.GetTask)
 	router.PUT("/tasks/:id", middleware.AuthMiddleware, taskController.UpdateTask)
 	router.PATCH("/tasks/update-status/:id", middleware.AuthMiddleware, taskController.PatchStatusTask)
-	router.PATCH("/tasks/update-category/:id", taskController.PatchCategoryTask)
+	router.PATCH("/tasks/update-category/:id", middleware.AuthMiddleware, taskController.PatchCategoryTask)
 	router.DELETE("/tasks/:id", middleware.AuthMiddleware, taskController.DeleteTask)
 
 	router.Run(":" + port)
