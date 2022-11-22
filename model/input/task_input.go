@@ -18,3 +18,7 @@ type TaskPatchStatusInput struct {
 type TaskPatchCategoryInput struct {
 	CategoryID int `json:"category_id" binding:"required"`
 }
+
+type TaskIdUri struct {
+	ID int `uri:"id" binding:"required"`
+}

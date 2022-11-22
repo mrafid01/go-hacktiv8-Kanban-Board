@@ -33,6 +33,7 @@ func (r *taskRepository) Create(task entity.Task) (entity.Task, error) {
 
 	return task, nil
 }
+
 func (r *taskRepository) FindCategoryByCategoryId(id_category int) (entity.Category, error) {
 	var category entity.Category
 
@@ -55,10 +56,24 @@ func (r *taskRepository) FindAll() ([]entity.Task, error) {
 	return tasks, nil
 }
 
-func (r *taskRepository) FindByID(id_task int) (entity.Task, error) { return entity.Task{}, nil }
+func (r *taskRepository) FindByID(id_task int) (entity.Task, error) {
+	var task entity.Task
+
+	err := r.db.Preload("User").Preload("Category").Where("id = ?", id_task).Find(&task).Error
+	if err != nil {
+		return entity.Task{}, err
+	}
+
+	return task, nil
+}
 
 func (r *taskRepository) Update(id_task int, task entity.Task) (entity.Task, error) {
-	return entity.Task{}, nil
+	err := r.db.Preload("User").Preload("Category").Where("id = ?", id_task).Updates(&task).Error
+	if err != nil {
+		return entity.Task{}, err
+	}
+
+	return task, nil
 }
 
 func (r *taskRepository) PatchStatus(id_task int, task entity.Task) (entity.Task, error) {
