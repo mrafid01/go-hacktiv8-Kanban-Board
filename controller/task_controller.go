@@ -333,4 +333,51 @@ func (h *taskController) PatchCategoryTask(c *gin.Context) {
 	)
 }
 
-func (h *taskController) DeleteTask(c *gin.Context) {}
+func (h *taskController) DeleteTask(c *gin.Context) {
+	var (
+		uri input.TaskIdUri
+	)
+
+	id_user := c.MustGet("currentUser").(int)
+
+	err := c.ShouldBindUri(&uri)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	_, err = h.taskService.DeleteTask(id_user, uri.ID)
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	taskResponse := response.TaskDeleteResponse{
+		Message: "Task has been successfully deleted",
+	}
+
+	c.JSON(
+		http.StatusOK,
+		helper.NewResponse(
+			http.StatusOK,
+			"ok",
+			taskResponse,
+		),
+	)
+}

@@ -13,7 +13,7 @@ type TaskService interface {
 	UpdateTask(id_user int, id_task int, input input.TaskUpdateInput) (entity.Task, error)
 	PatchStatusTask(id_user int, id_task int, input input.TaskPatchStatusInput) (entity.Task, error)
 	PatchCategoryTask(id_user int, id_task int, input input.TaskPatchCategoryInput) (entity.Task, error)
-	DeleteTask(id_task int) (entity.Task, error)
+	DeleteTask(id_user int, id_task int) (entity.Task, error)
 }
 
 type taskService struct {
@@ -118,7 +118,7 @@ func (s *taskService) PatchCategoryTask(id_user int, id_task int, input input.Ta
 	if taskData.UserID != id_user {
 		return entity.Task{}, errors.New("can't update other people task")
 	}
-	
+
 	categoryData, err := s.taskRepository.FindCategoryByCategoryId(input.CategoryID)
 	if err != nil {
 		return entity.Task{}, err
@@ -139,7 +139,20 @@ func (s *taskService) PatchCategoryTask(id_user int, id_task int, input input.Ta
 	return s.taskRepository.FindByID(id_task)
 }
 
-func (s *taskService) DeleteTask(id_task int) (entity.Task, error) { return entity.Task{}, nil }
+func (s *taskService) DeleteTask(id_user int, id_task int) (entity.Task, error) {
+	taskData, err := s.taskRepository.FindByID(id_task)
+	if err != nil {
+		return entity.Task{}, err
+	}
+	if taskData.ID == 0 {
+		return entity.Task{}, errors.New("task not found")
+	}
+	if taskData.UserID != id_user {
+		return entity.Task{}, errors.New("can't delete other people task")
+	}
+
+	return s.taskRepository.Delete(id_task)
+}
 
 func newBool(b bool) *bool {
 	return &b

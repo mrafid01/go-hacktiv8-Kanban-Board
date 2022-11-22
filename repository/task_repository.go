@@ -74,4 +74,13 @@ func (r *taskRepository) Update(id_task int, task entity.Task) (entity.Task, err
 	return task, nil
 }
 
-func (r *taskRepository) Delete(id_task int) (entity.Task, error) { return entity.Task{}, nil }
+func (r *taskRepository) Delete(id_task int) (entity.Task, error) {
+	var task entity.Task
+
+	err := r.db.Where("id = ?", id_task).Delete(&task).Error
+	if err != nil {
+		return entity.Task{}, err
+	}
+
+	return task, nil
+}
