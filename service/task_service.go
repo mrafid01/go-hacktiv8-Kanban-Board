@@ -9,6 +9,7 @@ import (
 
 type TaskService interface {
 	CreateTask(id_user int, input input.TaskCreateInput) (entity.Task, error)
+	GetAllTask() ([]entity.Task, error)
 	GetTaskByID(id_task int) (entity.Task, error)
 	UpdateTask(id_task int, input input.TaskUpdateInput) (entity.Task, error)
 	PatchStatusTask(id_task int, input input.TaskPatchStatusInput) (entity.Task, error)
@@ -48,6 +49,16 @@ func (s *taskService) CreateTask(id_user int, input input.TaskCreateInput) (enti
 
 	return TaskData, nil
 }
+
+func (s *taskService) GetAllTask() ([]entity.Task, error) {
+	tasks, err := s.taskRepository.FindAll()
+	if err != nil {
+		return []entity.Task{}, err
+	}
+
+	return tasks, nil
+}
+
 func (s *taskService) GetTaskByID(id_task int) (entity.Task, error) { return entity.Task{}, nil }
 func (s *taskService) UpdateTask(id_task int, input input.TaskUpdateInput) (entity.Task, error) {
 	return entity.Task{}, nil

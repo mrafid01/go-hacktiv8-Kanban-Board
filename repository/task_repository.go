@@ -9,6 +9,7 @@ import (
 type TaskRepository interface {
 	Create(task entity.Task) (entity.Task, error)
 	FindCategoryByCategoryId(id_category int) (entity.Category, error)
+	FindAll() ([]entity.Task, error)
 	FindByID(id_task int) (entity.Task, error)
 	Update(id_task int, task entity.Task) (entity.Task, error)
 	PatchStatus(id_task int, task entity.Task) (entity.Task, error)
@@ -41,6 +42,17 @@ func (r *taskRepository) FindCategoryByCategoryId(id_category int) (entity.Categ
 	}
 
 	return category, nil
+}
+
+func (r *taskRepository) FindAll() ([]entity.Task, error) {
+	var tasks []entity.Task
+
+	err := r.db.Preload("User").Preload("Category").Find(&tasks).Error
+	if err != nil {
+		return []entity.Task{}, err
+	}
+
+	return tasks, nil
 }
 
 func (r *taskRepository) FindByID(id_task int) (entity.Task, error) { return entity.Task{}, nil }

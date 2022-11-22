@@ -73,7 +73,54 @@ func (h *taskController) CreateTask(c *gin.Context) {
 	)
 
 }
-func (h *taskController) GetTask(c *gin.Context)           {}
+func (h *taskController) GetTask(c *gin.Context) {
+	var (
+		allTasksTmp response.TaskGetResponse
+		allTasks    []response.TaskGetResponse
+	)
+	_ = c.MustGet("currentUser").(int)
+
+	categoryData, err := h.taskService.GetAllTask()
+	if err != nil {
+		errors := helper.GetErrorData(err)
+		c.JSON(
+			http.StatusUnprocessableEntity,
+			helper.NewErrorResponse(
+				http.StatusUnprocessableEntity,
+				"failed",
+				errors,
+			),
+		)
+		return
+	}
+
+	for _, data := range categoryData {
+		allTasksTmp = response.TaskGetResponse{
+			ID:          data.ID,
+			Title:       data.Title,
+			Status:      data.Status,
+			Description: data.Description,
+			UserID:      data.UserID,
+			CategoryID:  data.CategoryID,
+			CreatedAt:   data.CreatedAt,
+			User: response.TaskUser{
+				ID:       data.User.ID,
+				Email:    data.User.Email,
+				FullName: data.User.FullName,
+			},
+		}
+		allTasks = append(allTasks, allTasksTmp)
+	}
+
+	c.JSON(
+		http.StatusOK,
+		helper.NewResponse(
+			http.StatusOK,
+			"ok",
+			allTasks,
+		),
+	)
+}
 func (h *taskController) UpdateTask(c *gin.Context)        {}
 func (h *taskController) PatchStatusTask(c *gin.Context)   {}
 func (h *taskController) PatchCategoryTask(c *gin.Context) {}
