@@ -155,9 +155,7 @@ http://localhost:8080/users/delete-account
   ```json
   {
     "data": {
-        "id": "integer",
-        "type": "string",
-        "created_at": "date"
+        "message": "Your account has been successfully deleted"
   	}
   }
   ```
@@ -189,8 +187,7 @@ http://localhost:8080/categories
   {
     "data": {
         "id": "integer",
-        "full_name": "string",
-        "email": "string",
+        "type": "string",
         "created_at": "date"
   	}
   }
