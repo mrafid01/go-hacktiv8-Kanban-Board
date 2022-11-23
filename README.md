@@ -7,15 +7,15 @@ Requires [Golang](https://go.dev/dl/) and [MySQL](https://dev.mysql.com/download
 Config the .env first to connect into database
 
 - **Clone repository**
-```
+```sh
 git clone https://github.com/mrafid01/go-hacktiv8-Kanban-Board.git
 ```
 - **Change directory**
-```
+```sh
 cd go-hacktiv8-Kanban-Board
 ```
 - **Run "main.go" file**
-```
+```sh
 go run main.go
 ```
 
