@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3ab7cc1b-5acb-4d62-a3eb-9c43b131fe0e",
+		"_postman_id": "764a9c20-afe3-43f3-ba10-4af913eeaa99",
 		"name": "Hacktiv8-KanbanBoard-Kelompok-7",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23401248"
@@ -34,7 +34,8 @@
 								"users",
 								"admin"
 							]
-						}
+						},
+						"description": "This API allows you to create an admin account."
 					},
 					"response": [
 						{
@@ -111,7 +112,8 @@
 								"users",
 								"register"
 							]
-						}
+						},
+						"description": "This API allows you to create user account."
 					},
 					"response": [
 						{
@@ -235,7 +237,8 @@
 								"users",
 								"login"
 							]
-						}
+						},
+						"description": "This API allows you to login with user account or admin account using email and password."
 					},
 					"response": [
 						{
@@ -416,7 +419,8 @@
 								"users",
 								"update-account"
 							]
-						}
+						},
+						"description": "This API allows you to update full name or email in your Account (with bearer token)."
 					},
 					"response": [
 						{
@@ -494,7 +498,8 @@
 								"users",
 								"delete-account"
 							]
-						}
+						},
+						"description": "This API allows you to delete your own account (with bearer token)."
 					},
 					"response": [
 						{
@@ -537,7 +542,8 @@
 						}
 					]
 				}
-			]
+			],
+			"description": "Users Endpoints"
 		},
 		{
 			"name": "Categories",
@@ -576,7 +582,8 @@
 							"path": [
 								"categories"
 							]
-						}
+						},
+						"description": "This API allows you to post new categories type."
 					},
 					"response": [
 						{
@@ -790,7 +797,8 @@
 							"path": [
 								"categories"
 							]
-						}
+						},
+						"description": "This API allows you to get all categories types."
 					},
 					"response": [
 						{
@@ -904,7 +912,8 @@
 								"categories",
 								"1"
 							]
-						}
+						},
+						"description": "This API allows you to change categories type."
 					},
 					"response": [
 						{
@@ -1029,7 +1038,8 @@
 								"categories",
 								"1"
 							]
-						}
+						},
+						"description": "This API allows you to delete categories type."
 					},
 					"response": [
 						{
@@ -1110,7 +1120,8 @@
 						}
 					]
 				}
-			]
+			],
+			"description": "Categories Endpoints"
 		},
 		{
 			"name": "Tasks",
@@ -1149,7 +1160,8 @@
 							"path": [
 								"tasks"
 							]
-						}
+						},
+						"description": "This API allows you to post new task."
 					},
 					"response": [
 						{
@@ -1271,7 +1283,8 @@
 							"path": [
 								"tasks"
 							]
-						}
+						},
+						"description": "This API allows you to get all task."
 					},
 					"response": [
 						{
@@ -1348,7 +1361,8 @@
 								"tasks",
 								"1"
 							]
-						}
+						},
+						"description": "This API allows you to update title and description task."
 					},
 					"response": [
 						{
@@ -1483,7 +1497,8 @@
 								"update-status",
 								"1"
 							]
-						}
+						},
+						"description": "This API allows you to update status task."
 					},
 					"response": [
 						{
@@ -1620,7 +1635,8 @@
 								"update-category",
 								"1"
 							]
-						}
+						},
+						"description": "This API allows you to change category in task."
 					},
 					"response": [
 						{
@@ -1747,7 +1763,8 @@
 								"tasks",
 								"1"
 							]
-						}
+						},
+						"description": "This API allows you to delete task."
 					},
 					"response": [
 						{

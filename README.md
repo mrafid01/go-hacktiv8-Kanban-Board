@@ -19,7 +19,53 @@ cd go-hacktiv8-Kanban-Board
 go run main.go
 ```
 
+# Project Structure
+```
+ 📦go-hacktiv8-Kanban-Board
+ ┣ 📂config
+ ┃ ┣ 📜db.go
+ ┃ ┗ 📜db_test.go
+ ┣ 📂controller
+ ┃ ┣ 📜category_controller.go
+ ┃ ┣ 📜task_controller.go
+ ┃ ┗ 📜user_controller.go
+ ┣ 📂helper
+ ┃ ┣ 📜error.go
+ ┃ ┗ 📜response.go
+ ┣ 📂middleware
+ ┃ ┣ 📜jwt.go
+ ┃ ┗ 📜middleware.go
+ ┣ 📂model
+ ┃ ┣ 📂entity
+ ┃ ┃ ┣ 📜category.go
+ ┃ ┃ ┣ 📜task.go
+ ┃ ┃ ┗ 📜user.go
+ ┃ ┣ 📂input
+ ┃ ┃ ┣ 📜category_input.go
+ ┃ ┃ ┣ 📜task_input.go
+ ┃ ┃ ┗ 📜user_input.go
+ ┃ ┗ 📂response
+ ┃ ┃ ┣ 📜category_response.go
+ ┃ ┃ ┣ 📜task_response.go
+ ┃ ┃ ┗ 📜user_response.go
+ ┣ 📂repository
+ ┃ ┣ 📜category_repository.go
+ ┃ ┣ 📜task_repository.go
+ ┃ ┗ 📜user_repository.go
+ ┣ 📂service
+ ┃ ┣ 📜category_service.go
+ ┃ ┣ 📜task_service.go
+ ┃ ┗ 📜user_service.go
+ ┣ 📜.env
+ ┣ 📜go.mod
+ ┣ 📜go.sum
+ ┣ 📜Hacktiv8-KanbanBoard-Kelompok-7.postman_collection.json
+ ┣ 📜main.go
+ ┗ 📜README.md
+ ```
+
 # Endpoint
+Postman Collection Documentation: https://documenter.getpostman.com/view/23401248/2s8YsnYcEk
 ## User
 ### Create Admin Account
 - Method: **`POST`**
