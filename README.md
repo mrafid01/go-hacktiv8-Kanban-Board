@@ -1,5 +1,5 @@
 # Hacktiv Final Project 3
-Kanban Board is an application for project management. User in this application will be able to add their tasks to the categories provided by an admin.
+<p align="justify">Kanban Board is an application for project management. User in this application will be able to add their tasks to the categories provided by an admin.</p>
 
 # Installation
 Requires [Golang](https://go.dev/dl/) and [MySQL](https://dev.mysql.com/downloads/installer/)
@@ -7,15 +7,15 @@ Requires [Golang](https://go.dev/dl/) and [MySQL](https://dev.mysql.com/download
 Config the .env first to connect into database
 
 - **Clone repository**
-```
+```sh
 git clone https://github.com/mrafid01/go-hacktiv8-Kanban-Board.git
 ```
 - **Change directory**
-```
+```sh
 cd go-hacktiv8-Kanban-Board
 ```
 - **Run "main.go" file**
-```
+```sh
 go run main.go
 ```
 
@@ -80,7 +80,7 @@ http://localhost:8080/users/register
   	}
   }
   ```
-Notes: Untuk endpoint ini, role dari data user akan otomatis menjadi member. Boleh langsung diharcode di controllernya sebelum disimpan ke dalam database.
+<p align="justify">Notes: Untuk endpoint ini, role dari data user akan otomatis menjadi member. Boleh langsung diharcode di controllernya sebelum disimpan ke dalam database.</p>
 
 ### Login User
 - Method: **`POST`**
@@ -107,7 +107,7 @@ http://localhost:8080/users/login
   	}
   }
   ```
-Notes: Pada endpoint ini, wajib melakukan logika user login yang dimana harus melakukan pengecekan email dan password user. Pengecekan password wajib dilakukan dengan bantuan library/package **Bcrypt**.
+<p align="justify">Notes: Pada endpoint ini, wajib melakukan logika user login yang dimana harus melakukan pengecekan email dan password user. Pengecekan password wajib dilakukan dengan bantuan library/package <b>Bcrypt</b>.</p>
 
 ### Update Data User
 - Method: **`PUT`**
@@ -138,7 +138,7 @@ http://localhost:8080/users/update-account
   	}
   }
   ```
-Notes: Endpoint ini memerlukan proses autentikasi. Proses autentikasi wajib dilakukan dengan package/library **JsonWebToken**. Endpoint ini berguna untuk user mengupdate data dirinya.
+<p align="justify">Notes: Endpoint ini memerlukan proses autentikasi. Proses autentikasi wajib dilakukan dengan package/library <b>JsonWebToken</b>. Endpoint ini berguna untuk user mengupdate data dirinya.</p>
 
 ### Delete Account
 - Method: **`DELETE`**
@@ -161,11 +161,11 @@ http://localhost:8080/users/delete-account
   	}
   }
   ```
-Notes: Endpoint ini memerlukan proses autentikasi. Proses autentikasi wajib dilakukan dengan package/library **JsonWebToken**. Endpoint ini berguna untuk user menghapus akunnya
+<p align="justify">Notes: Endpoint ini memerlukan proses autentikasi. Proses autentikasi wajib dilakukan dengan package/library <b>JsonWebToken</b>. Endpoint ini berguna untuk user menghapus akunnya.</p>
 
 
 ## Categories
-Notes: Seluruh endpoint untuk mengakses endpoint categories **selain** method GET memerlukan proses autentikasi menggunakan package JsonWebToken dan memerlukan proses autorisasi. Autorisasi diperlukan karena yang boleh mengakses endpoint categories **selain** method GET adalah user dengan role admin.
+<p align="justify">Notes: Seluruh endpoint untuk mengakses endpoint categories <b>selain</b> method GET memerlukan proses autentikasi menggunakan package JsonWebToken dan memerlukan proses autorisasi. Autorisasi diperlukan karena yang boleh mengakses endpoint categories <b>selain</b> method GET adalah user dengan role admin.</p>
 
 ### Create Categories Type (must an admin)
 - Method: **`POST`**
@@ -245,14 +245,13 @@ http://localhost:8080//categories/:categoryId
     ```
 - Response Body:
   - Status: 200,
-  - Message: "OK",
+  - Message: "ok",
   - Body:
   ```json
   {
     "data": {
         "id": "integer",
         "type": "string",
-        "sold_product_amount": "integer",
         "updated_at": "date"
   	}
   }
@@ -269,7 +268,7 @@ http://localhost:8080//categories/:categoryId
     - Params: categoryId (integer)
 - Response Body:
   - Status: 200,
-  - Message: "OK",
+  - Message: "ok",
   - Body:
   ```json
   {
@@ -316,7 +315,7 @@ http://localhost:8080/tasks
   	}
   }
   ```
-Notes: Pada endpoint ini, harus dilakukan pengecekkan jika data category dengan **id** yang diberikan pada request body dengan field **categoryId** ada atau tidak pada database. Jika ada maka boleh disimpan ke database namun jika tidak ada maka harus melempar error. Kemudian untuk field status nilai awalnya akan otomatis menjadi false. Boleh langsung di hardcode di controllernya.
+<p align="justify">Notes: Pada endpoint ini, harus dilakukan pengecekkan jika data category dengan <b>id</b> yang diberikan pada request body dengan field <b>categoryId</b> ada atau tidak pada database. Jika ada maka boleh disimpan ke database namun jika tidak ada maka harus melempar error. Kemudian untuk field status nilai awalnya akan otomatis menjadi false. Boleh langsung di hardcode di controllernya.</p>
 
 ### Get Tasks
 - Method: **`GET`**
@@ -422,7 +421,7 @@ Notes: Pada endpoint ini, perlu dilakukan proses autorisasi yang dimana user han
 - Method: **`PATCH`**
 - Endpoint:
 ```
-http://localhost:8080/tasks/update-status/:taskID
+http://localhost:8080/tasks/update-category/:taskID
 ```
 - Request:
     - Headers: Authorization (Bearer Token)
@@ -450,7 +449,7 @@ http://localhost:8080/tasks/update-status/:taskID
   	}
   }
   ```
-Notes: Pada endpoint ini, perlu dilakukan proses autorisasi yang dimana user hanya boleh mengupdate category id dari task milikinya sendiri. Lalu perlu dilakukan pengecekan jika category dengan id yang dinput oleh user ada di dalam database, maka proses dapat dilanjut. Namun jika tidak ada maka akan langsung melempar error.
+<p align="justify">Notes: Pada endpoint ini, perlu dilakukan proses autorisasi yang dimana user hanya boleh mengupdate category id dari task milikinya sendiri. Lalu perlu dilakukan pengecekan jika category dengan id yang dinput oleh user ada di dalam database, maka proses dapat dilanjut. Namun jika tidak ada maka akan langsung melempar error.</p>
 
 ### Delete Task
 - Method: **`DELETE`**
