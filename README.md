@@ -227,7 +227,7 @@ http://localhost:8080/categories
   }
   ```
 
-### Patch Update Categories Type (must an admin)
+### Update Categories Type (must an admin)
 - Method: PATCH
 - Endpoint:
 ```
