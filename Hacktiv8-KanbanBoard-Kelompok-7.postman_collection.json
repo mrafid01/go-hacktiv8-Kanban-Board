@@ -828,7 +828,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status_code\": 200,\n    \"message\": \"ok\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": \"AdminTypes\",\n            \"updated_at\": \"2022-11-23T08:35:23.116+07:00\",\n            \"created_at\": \"2022-11-23T08:35:23.116+07:00\",\n            \"Tasks\": null\n        }\n    ]\n}"
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"ok\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": \"AdminTypes\",\n            \"updated_at\": \"2022-11-23T08:35:23.116+07:00\",\n            \"created_at\": \"2022-11-23T08:35:23.116+07:00\",\n            \"Tasks\": [\n                {\n                    \"id\": 1,\n                    \"title\": \"tasks pertama by admin\",\n                    \"description\": \"ini adalah tasks pertama yang dibuat admin\",\n                    \"status\": false,\n                    \"user_id\": 4,\n                    \"category_id\": 1,\n                    \"created_at\": \"2022-11-23T09:06:32.778+07:00\",\n                    \"updated_at\": \"2022-11-23T09:35:32.222+07:00\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						{
 							"name": "Categories Type Get by admin",
@@ -865,7 +865,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status_code\": 200,\n    \"message\": \"ok\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": \"AdminTypes\",\n            \"updated_at\": \"2022-11-23T08:35:23.116+07:00\",\n            \"created_at\": \"2022-11-23T08:35:23.116+07:00\",\n            \"Tasks\": null\n        }\n    ]\n}"
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"ok\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": \"AdminTypes\",\n            \"updated_at\": \"2022-11-23T08:35:23.116+07:00\",\n            \"created_at\": \"2022-11-23T08:35:23.116+07:00\",\n            \"Tasks\": [\n                {\n                    \"id\": 1,\n                    \"title\": \"tasks pertama by admin\",\n                    \"description\": \"ini adalah tasks pertama yang dibuat admin\",\n                    \"status\": false,\n                    \"user_id\": 4,\n                    \"category_id\": 1,\n                    \"created_at\": \"2022-11-23T09:06:32.778+07:00\",\n                    \"updated_at\": \"2022-11-23T09:35:32.222+07:00\"\n                }\n            ]\n        }\n    ]\n}"
 						}
 					]
 				},
