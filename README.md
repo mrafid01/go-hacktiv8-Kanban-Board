@@ -1,4 +1,5 @@
 # Hacktiv Final Project 3
+Kanban Board is an application for project management. User in this application will be able to add their tasks to the categories provided by an admin.
 
 # Installation
 Requires [Golang](https://go.dev/dl/) and [MySQL](https://dev.mysql.com/downloads/installer/)
@@ -21,7 +22,7 @@ go run main.go
 # Endpoint
 ## User
 ### Create Admin Account
-- Method: POST
+- Method: **`POST`**
 - Endpoint:
 ```
 http://localhost:8080/users/admin
@@ -51,7 +52,7 @@ http://localhost:8080/users/admin
   ```
 
 ### Create User Account
-- Method: POST
+- Method: **`POST`**
 - Endpoint:
 ```
 http://localhost:8080/users/register
@@ -82,7 +83,7 @@ http://localhost:8080/users/register
 Notes: Untuk endpoint ini, role dari data user akan otomatis menjadi member. Boleh langsung diharcode di controllernya sebelum disimpan ke dalam database.
 
 ### Login User
-- Method: POST
+- Method: **`POST`**
 - Endpoint:
 ```
 http://localhost:8080/users/login
@@ -109,7 +110,7 @@ http://localhost:8080/users/login
 Notes: Pada endpoint ini, wajib melakukan logika user login yang dimana harus melakukan pengecekan email dan password user. Pengecekan password wajib dilakukan dengan bantuan library/package **Bcrypt**.
 
 ### Update Data User
-- Method: PUT
+- Method: **`PUT`**
 - Endpoint:
 ```
 http://localhost:8080/users/update-account
@@ -140,7 +141,7 @@ http://localhost:8080/users/update-account
 Notes: Endpoint ini memerlukan proses autentikasi. Proses autentikasi wajib dilakukan dengan package/library **JsonWebToken**. Endpoint ini berguna untuk user mengupdate data dirinya.
 
 ### Delete Account
-- Method: DELETE
+- Method: **`DELETE`**
 - Endpoint:
 ```
 http://localhost:8080/users/delete-account
@@ -167,7 +168,7 @@ Notes: Endpoint ini memerlukan proses autentikasi. Proses autentikasi wajib dila
 Notes: Seluruh endpoint untuk mengakses endpoint categories **selain** method GET memerlukan proses autentikasi menggunakan package JsonWebToken dan memerlukan proses autorisasi. Autorisasi diperlukan karena yang boleh mengakses endpoint categories **selain** method GET adalah user dengan role admin.
 
 ### Create Categories Type (must an admin)
-- Method: POST
+- Method: **`POST`**
 - Endpoint:
 ```
 http://localhost:8080/categories
@@ -196,7 +197,7 @@ http://localhost:8080/categories
   ```
 
 ### Get All Categories Type
-- Method: GET
+- Method: **`GET`**
 - Endpoint:
 ```
 http://localhost:8080/categories
@@ -228,7 +229,7 @@ http://localhost:8080/categories
   ```
 
 ### Update Categories Type (must an admin)
-- Method: PATCH
+- Method: **`PATCH`**
 - Endpoint:
 ```
 http://localhost:8080//categories/:categoryId
@@ -258,7 +259,7 @@ http://localhost:8080//categories/:categoryId
   ```
 
 ### Delete Categories Type (must an admin)
-- Method: DELETE
+- Method: **`DELETE`**
 - Endpoint:
 ```
 http://localhost:8080//categories/:categoryId
@@ -283,7 +284,7 @@ http://localhost:8080//categories/:categoryId
 
 ## Tasks
 ### Create Task
-- Method: POST
+- Method: **`POST`**
 - Endpoint:
 ```
 http://localhost:8080/tasks
@@ -318,7 +319,7 @@ http://localhost:8080/tasks
 Notes: Pada endpoint ini, harus dilakukan pengecekkan jika data category dengan **id** yang diberikan pada request body dengan field **categoryId** ada atau tidak pada database. Jika ada maka boleh disimpan ke database namun jika tidak ada maka harus melempar error. Kemudian untuk field status nilai awalnya akan otomatis menjadi false. Boleh langsung di hardcode di controllernya.
 
 ### Get Tasks
-- Method: GET
+- Method: **`GET`**
 - Endpoint:
 ```
 http://localhost:8080/tasks
@@ -349,7 +350,7 @@ http://localhost:8080/tasks
   ```
 
 ### Update Title & Description Task
-- Method: PUT
+- Method: **`PUT`**
 - Endpoint:
 ```
 http://localhost:8080/tasks/:taskID
@@ -384,7 +385,7 @@ http://localhost:8080/tasks/:taskID
 Notes: Pada endpoint ini, perlu dilakukan proses autorisasi yang dimana user hanya boleh mengupdate task milikinya sendiri.
 
 ### Update Status Task
-- Method: PATCH
+- Method: **`PATCH`**
 - Endpoint:
 ```
 http://localhost:8080/tasks/update-status/:taskID
@@ -418,7 +419,7 @@ http://localhost:8080/tasks/update-status/:taskID
 Notes: Pada endpoint ini, perlu dilakukan proses autorisasi yang dimana user hanya boleh mengupdate task milikinya sendiri.
 
 ### Update Category Task
-- Method: PATCH
+- Method: **`PATCH`**
 - Endpoint:
 ```
 http://localhost:8080/tasks/update-status/:taskID
@@ -452,7 +453,7 @@ http://localhost:8080/tasks/update-status/:taskID
 Notes: Pada endpoint ini, perlu dilakukan proses autorisasi yang dimana user hanya boleh mengupdate category id dari task milikinya sendiri. Lalu perlu dilakukan pengecekan jika category dengan id yang dinput oleh user ada di dalam database, maka proses dapat dilanjut. Namun jika tidak ada maka akan langsung melempar error.
 
 ### Delete Task
-- Method: PATCH
+- Method: **`DELETE`**
 - Endpoint:
 ```
 http://localhost:8080/tasks/:taskID
