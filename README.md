@@ -222,8 +222,8 @@ http://localhost:8080/categories
             "category_id": "integer",
             "created_at": "date",
             "updated_at": "date"
-        }
-  	}
+                }
+            }
   }
   ```
 
@@ -343,8 +343,8 @@ http://localhost:8080/tasks
                 "id": "integer",
                 "email": "string",
                 "full_name": "string"
-        }
-  	}
+                }
+  	  }
   }
   ```
 
@@ -455,7 +455,7 @@ Notes: Pada endpoint ini, perlu dilakukan proses autorisasi yang dimana user han
 - Method: PATCH
 - Endpoint:
 ```
-http://localhost:8080/tasks/update-status/:taskID
+http://localhost:8080/tasks/:taskID
 ```
 - Request:
     - Headers: Authorization (Bearer Token)
