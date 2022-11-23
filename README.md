@@ -155,7 +155,7 @@ http://localhost:8080/users/delete-account
   ```json
   {
     "data": {
-        "message": "Category has been successfully deleted"
+        "message": "Your account has been successfully deleted"
   	}
   }
   ```
