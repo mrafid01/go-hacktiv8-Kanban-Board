@@ -538,6 +538,6 @@ http://localhost:8080/tasks/:taskID
 # Group 7
 <pre style="font-family:verdana">
 
-<p>1. <a href="https://github.com/alrico11"><b>Alrico Rizki Wibowo</b></a>&emsp;  —&emsp;GLNG-KS04-017</p>
-<p>2. <a href="https://github.com/rickyfazaa"><b>Ricky Khairul Faza</b></a>&emsp;    —&emsp;GLNG-KS04-022</p>
-<p>3. <a href="https://github.com/mrafid01"><b>Muhammad Rafid</b></a>&emsp;     —&emsp;GLNG-KS04-024</p></pre>
+<p>1. <a href="https://github.com/alrico11"><b>Alrico Rizki Wibowo</b></a>&emsp; —&emsp;GLNG-KS04-017</p>
+<p>2. <a href="https://github.com/rickyfazaa"><b>Ricky Khairul Faza</b></a>&emsp; —&emsp;GLNG-KS04-022</p>
+<p>3. <a href="https://github.com/mrafid01"><b>Muhammad Rafid</b></a>&emsp; —&emsp;GLNG-KS04-024</p></pre>
