@@ -49,16 +49,16 @@ func main() {
 	// Category
 	router.POST("/categories", middleware.AuthMiddleware, categoryController.CreateCategory)
 	router.GET("/categories", middleware.AuthMiddleware, categoryController.GetCategory)
-	router.PATCH("/categories/:id", middleware.AuthMiddleware, categoryController.PatchCategory)
-	router.DELETE("/categories/:id", middleware.AuthMiddleware, categoryController.DeleteCategory)
+	router.PATCH("/categories/:categoryID", middleware.AuthMiddleware, categoryController.PatchCategory)
+	router.DELETE("/categories/:categoryID", middleware.AuthMiddleware, categoryController.DeleteCategory)
 
 	// Task
 	router.POST("/tasks", middleware.AuthMiddleware, taskController.CreateTask)
 	router.GET("/tasks", middleware.AuthMiddleware, taskController.GetTask)
-	router.PUT("/tasks/:id", middleware.AuthMiddleware, taskController.UpdateTask)
-	router.PATCH("/tasks/update-status/:id", middleware.AuthMiddleware, taskController.PatchStatusTask)
-	router.PATCH("/tasks/update-category/:id", middleware.AuthMiddleware, taskController.PatchCategoryTask)
-	router.DELETE("/tasks/:id", middleware.AuthMiddleware, taskController.DeleteTask)
+	router.PUT("/tasks/:taskID", middleware.AuthMiddleware, taskController.UpdateTask)
+	router.PATCH("/tasks/update-status/:taskID", middleware.AuthMiddleware, taskController.PatchStatusTask)
+	router.PATCH("/tasks/update-category/:taskID", middleware.AuthMiddleware, taskController.PatchCategoryTask)
+	router.DELETE("/tasks/:taskID", middleware.AuthMiddleware, taskController.DeleteTask)
 
 	router.Run(":" + port)
 }
