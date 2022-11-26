@@ -2,20 +2,20 @@
 <p align="justify">Kanban Board is an application for project management. User in this application will be able to add their tasks to the categories provided by an admin.</p>
 
 # Installation
-Requires <b>[Golang](https://go.dev/dl/)</b> and <b>[MySQL](https://dev.mysql.com/downloads/installer/)<b>
+Requires <b>[Golang](https://go.dev/dl/)</b> and <b>[MySQL](https://dev.mysql.com/downloads/installer/)</b>
 
 Config the .env first to connect into database
 
 - **Clone repository**
-```properties
+```bash
 git clone https://github.com/mrafid01/go-hacktiv8-Kanban-Board.git
 ```
 - **Change directory**
-```properties
+```sh
 cd go-hacktiv8-Kanban-Board
 ```
 - **Run "main.go" file**
-```properties
+```sh
 go run main.go
 ```
 
