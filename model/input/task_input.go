@@ -20,5 +20,5 @@ type TaskPatchCategoryInput struct {
 }
 
 type TaskIdUri struct {
-	ID int `uri:"id" binding:"required"`
+	ID int `uri:"taskID" binding:"required"`
 }
