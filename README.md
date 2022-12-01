@@ -93,7 +93,7 @@ http://localhost:8080/users/admin
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "full_name": "string",
         "email": "string",
         "created_at": "date"
@@ -124,7 +124,7 @@ http://localhost:8080/users/register
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "full_name": "string",
         "email": "string",
         "created_at": "date"
@@ -184,7 +184,7 @@ http://localhost:8080/users/update-account
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "full_name": "string",
         "email": "string",
         "updated_at": "date"
@@ -241,7 +241,7 @@ http://localhost:8080/categories
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "type": "string",
         "created_at": "date"
   	}
@@ -264,16 +264,16 @@ http://localhost:8080/categories
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "type": "string",
         "updated_at": "date",
         "created_at": "date",
         "Tasks": {
-            "id": "integer",
+            "id": integer,
             "title": "string",
             "description": "string",
-            "user_id": "integer",
-            "category_id": "integer",
+            "user_id": integer,
+            "category_id": integer,
             "created_at": "date",
             "updated_at": "date"
                 }
@@ -304,7 +304,7 @@ http://localhost:8080//categories/:categoryId
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "type": "string",
         "updated_at": "date"
   	}
@@ -351,7 +351,7 @@ http://localhost:8080/tasks
     {
         "title": "string",
         "description": "string",
-        "category_id": "integer"
+        "category_id": integer
     }
     ```
 - Response Body:
@@ -361,12 +361,12 @@ http://localhost:8080/tasks
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "title": "string",
         "status": "boolean",
         "description": "string",
-        "user_id": "integer",
-        "category_id": "integer",
+        "user_id": integer,
+        "category_id": integer,
         "created_at": "date"
   	}
   }
@@ -389,15 +389,15 @@ http://localhost:8080/tasks
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "title": "string",
         "status": "boolean",
         "description": "string",
-        "user_id": "integer",
-        "category_id": "integer",
+        "user_id": integer,
+        "category_id": integer,
         "created_at": "date",
         "User": {
-                "id": "integer",
+                "id": integer,
                 "email": "string",
                 "full_name": "string"
                 }
@@ -429,12 +429,12 @@ http://localhost:8080/tasks/:taskID
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "title": "string",
         "description": "string",
         "status": "boolean",
-        "user_id": "integer",
-        "category_id": "integer",
+        "user_id": integer,
+        "category_id": integer,
         "updated_at": "date"
   	}
   }
@@ -464,12 +464,12 @@ http://localhost:8080/tasks/update-status/:taskID
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "title": "string",
         "description": "string",
         "status": "boolean",
-        "user_id": "integer",
-        "category_id": "integer",
+        "user_id": integer,
+        "category_id": integer,
         "updated_at": "date"
   	}
   }
@@ -489,7 +489,7 @@ http://localhost:8080/tasks/update-category/:taskID
     - Request Body:
     ```json
     {
-        "category_id": "integer"
+        "category_id": integer
     }
     ```
 - Response Body:
@@ -499,12 +499,12 @@ http://localhost:8080/tasks/update-category/:taskID
   ```json
   {
     "data": {
-        "id": "integer",
+        "id": integer,
         "title": "string",
         "description": "string",
         "status": "boolean",
-        "user_id": "integer",
-        "category_id": "integer",
+        "user_id": integer,
+        "category_id": integer,
         "updated_at": "date"
   	}
   }
