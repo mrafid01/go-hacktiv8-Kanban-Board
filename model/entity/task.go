@@ -3,7 +3,7 @@ package entity
 import "time"
 
 type Task struct {
-	ID          int `gorm:"primarykey"`
+	ID          int
 	Title       string
 	Description string
 	Status      *bool
