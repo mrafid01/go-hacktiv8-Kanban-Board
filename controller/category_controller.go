@@ -12,10 +12,11 @@ import (
 
 type categoryController struct {
 	categoryService service.CategoryService
+	taskService     service.TaskService
 }
 
-func NewCategoryController(categoryService service.CategoryService) *categoryController {
-	return &categoryController{categoryService}
+func NewCategoryController(categoryService service.CategoryService, taskService service.TaskService) *categoryController {
+	return &categoryController{categoryService, taskService}
 }
 
 func (h *categoryController) CreateCategory(c *gin.Context) {
@@ -75,8 +76,6 @@ func (h *categoryController) GetCategory(c *gin.Context) {
 		allCategories []response.CategoryGetResponse
 	)
 
-	_ = c.MustGet("currentUser").(int)
-
 	categoryData, err := h.categoryService.GetAllCategory()
 	if err != nil {
 		errors := helper.GetErrorData(err)
@@ -92,7 +91,7 @@ func (h *categoryController) GetCategory(c *gin.Context) {
 	}
 
 	for _, dataCategory := range categoryData {
-		tasksData, err := h.categoryService.GetTasksByCategoryID(dataCategory.ID)
+		tasksData, err := h.taskService.GetTasksByCategoryID(dataCategory.ID)
 		if err != nil {
 			errors := helper.GetErrorData(err)
 			c.JSON(

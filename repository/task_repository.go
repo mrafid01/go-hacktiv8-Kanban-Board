@@ -8,9 +8,9 @@ import (
 
 type TaskRepository interface {
 	Create(task entity.Task) (entity.Task, error)
-	FindCategoryByCategoryId(id_category int) (entity.Category, error)
 	FindAll() ([]entity.Task, error)
 	FindByID(id_task int) (entity.Task, error)
+	FindByCategoryID(id_category int) ([]entity.Task, error)
 	Update(id_task int, task entity.Task) (entity.Task, error)
 	Delete(id_task int) (entity.Task, error)
 }
@@ -30,17 +30,6 @@ func (r *taskRepository) Create(task entity.Task) (entity.Task, error) {
 	}
 
 	return task, nil
-}
-
-func (r *taskRepository) FindCategoryByCategoryId(id_category int) (entity.Category, error) {
-	var category entity.Category
-
-	err := r.db.Where("id = ?", id_category).Find(&category).Error
-	if err != nil {
-		return entity.Category{}, err
-	}
-
-	return category, nil
 }
 
 func (r *taskRepository) FindAll() ([]entity.Task, error) {
@@ -63,6 +52,17 @@ func (r *taskRepository) FindByID(id_task int) (entity.Task, error) {
 	}
 
 	return task, nil
+}
+
+func (r *taskRepository) FindByCategoryID(id_category int) ([]entity.Task, error) {
+	var tasks []entity.Task
+
+	err := r.db.Where("category_id = ?", id_category).Find(&tasks).Error
+	if err != nil {
+		return []entity.Task{}, err
+	}
+
+	return tasks, nil
 }
 
 func (r *taskRepository) Update(id_task int, task entity.Task) (entity.Task, error) {
