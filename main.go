@@ -29,11 +29,11 @@ func main() {
 	taskRepository := repository.NewTaskRepository(db)
 
 	userService := service.NewUserService(userRepository)
-	categoryService := service.NewCategoryService(categoryRepository)
-	taskService := service.NewTaskService(taskRepository)
+	categoryService := service.NewCategoryService(categoryRepository, taskRepository)
+	taskService := service.NewTaskService(taskRepository, categoryRepository)
 
 	userController := controller.NewUserController(userService)
-	categoryController := controller.NewCategoryController(categoryService)
+	categoryController := controller.NewCategoryController(categoryService, taskService)
 	taskController := controller.NewTaskController(taskService)
 
 	router := gin.Default()
@@ -48,7 +48,7 @@ func main() {
 
 	// Category
 	router.POST("/categories", middleware.AuthMiddleware, categoryController.CreateCategory)
-	router.GET("/categories", middleware.AuthMiddleware, categoryController.GetCategory)
+	router.GET("/categories", categoryController.GetCategory)
 	router.PATCH("/categories/:categoryID", middleware.AuthMiddleware, categoryController.PatchCategory)
 	router.DELETE("/categories/:categoryID", middleware.AuthMiddleware, categoryController.DeleteCategory)
 

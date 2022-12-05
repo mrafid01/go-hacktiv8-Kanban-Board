@@ -10,6 +10,7 @@ import (
 type TaskService interface {
 	CreateTask(id_user int, input input.TaskCreateInput) (entity.Task, error)
 	GetAllTask() ([]entity.Task, error)
+	GetTasksByCategoryID(id_category int) ([]entity.Task, error)
 	UpdateTask(id_user int, id_task int, input input.TaskUpdateInput) (entity.Task, error)
 	PatchStatusTask(id_user int, id_task int, input input.TaskPatchStatusInput) (entity.Task, error)
 	PatchCategoryTask(id_user int, id_task int, input input.TaskPatchCategoryInput) (entity.Task, error)
@@ -17,15 +18,16 @@ type TaskService interface {
 }
 
 type taskService struct {
-	taskRepository repository.TaskRepository
+	taskRepository     repository.TaskRepository
+	categoryRepository repository.CategoryRepository
 }
 
-func NewTaskService(taskRepository repository.TaskRepository) *taskService {
-	return &taskService{taskRepository}
+func NewTaskService(taskRepository repository.TaskRepository, categoryRepository repository.CategoryRepository) *taskService {
+	return &taskService{taskRepository, categoryRepository}
 }
 
 func (s *taskService) CreateTask(id_user int, input input.TaskCreateInput) (entity.Task, error) {
-	categoryData, err := s.taskRepository.FindCategoryByCategoryId(input.CategoryID)
+	categoryData, err := s.categoryRepository.GetCategoryById(input.CategoryID)
 	if err != nil {
 		return entity.Task{}, err
 	}
@@ -56,6 +58,10 @@ func (s *taskService) GetAllTask() ([]entity.Task, error) {
 	}
 
 	return tasksData, nil
+}
+
+func (s *taskService) GetTasksByCategoryID(id_category int) ([]entity.Task, error) {
+	return s.taskRepository.FindByCategoryID(id_category)
 }
 
 func (s *taskService) UpdateTask(id_user int, id_task int, input input.TaskUpdateInput) (entity.Task, error) {
@@ -119,7 +125,7 @@ func (s *taskService) PatchCategoryTask(id_user int, id_task int, input input.Ta
 		return entity.Task{}, errors.New("can't update other people task")
 	}
 
-	categoryData, err := s.taskRepository.FindCategoryByCategoryId(input.CategoryID)
+	categoryData, err := s.categoryRepository.GetCategoryById(input.CategoryID)
 	if err != nil {
 		return entity.Task{}, err
 	}

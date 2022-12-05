@@ -10,17 +10,17 @@ import (
 type CategoryService interface {
 	CreateCategory(role_user string, input input.CategoryCreateInput) (entity.Category, error)
 	GetAllCategory() ([]entity.Category, error)
-	GetTasksByCategoryID(id_category int) ([]entity.Task, error)
 	PatchCategory(role_user string, id_category int, input input.CategoryPatchInput) (entity.Category, error)
 	DeleteCategory(role_user string, id_category int) (entity.Category, error)
 }
 
 type categoryService struct {
 	categoryRepository repository.CategoryRepository
+	taskRepository     repository.TaskRepository
 }
 
-func NewCategoryService(categoryRepository repository.CategoryRepository) *categoryService {
-	return &categoryService{categoryRepository}
+func NewCategoryService(categoryRepository repository.CategoryRepository, taskRepository repository.TaskRepository) *categoryService {
+	return &categoryService{categoryRepository, taskRepository}
 }
 
 func (s *categoryService) CreateCategory(role_user string, input input.CategoryCreateInput) (entity.Category, error) {
@@ -47,15 +47,6 @@ func (s *categoryService) GetAllCategory() ([]entity.Category, error) {
 	}
 
 	return categories, nil
-}
-
-func (s *categoryService) GetTasksByCategoryID(id_category int) ([]entity.Task, error) {
-	tasks, err := s.categoryRepository.GetTasksByCategoryID(id_category)
-	if err != nil {
-		return []entity.Task{}, err
-	}
-
-	return tasks, nil
 }
 
 func (s *categoryService) PatchCategory(role_user string, id_category int, input input.CategoryPatchInput) (entity.Category, error) {
