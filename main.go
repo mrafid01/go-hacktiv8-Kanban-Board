@@ -25,15 +25,15 @@ func main() {
 	db := config.InitDB(dbUsername, dbPassword, dbHost, dbPort, dbName)
 
 	userRepository := repository.NewUserRepository(db)
-	userService := service.NewUserService(userRepository)
-	userController := controller.NewUserController(userService)
-
 	categoryRepository := repository.NewCategoryRepository(db)
-	categoryService := service.NewCategoryService(categoryRepository)
-	categoryController := controller.NewCategoryController(categoryService)
-
 	taskRepository := repository.NewTaskRepository(db)
+
+	userService := service.NewUserService(userRepository)
+	categoryService := service.NewCategoryService(categoryRepository)
 	taskService := service.NewTaskService(taskRepository)
+
+	userController := controller.NewUserController(userService)
+	categoryController := controller.NewCategoryController(categoryService)
 	taskController := controller.NewTaskController(taskService)
 
 	router := gin.Default()
