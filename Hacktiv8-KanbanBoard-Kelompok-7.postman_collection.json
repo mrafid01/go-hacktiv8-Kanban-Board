@@ -24,12 +24,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/admin",
-							"protocol": "http",
+							"raw": "{{host}}/users/admin",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"users",
 								"admin"
@@ -53,12 +51,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/users/admin",
-									"protocol": "http",
+									"raw": "{{host}}/users/admin",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"admin"
@@ -102,12 +98,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/register",
-							"protocol": "http",
+							"raw": "{{host}}/users/register",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"users",
 								"register"
@@ -131,12 +125,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/users/register",
-									"protocol": "http",
+									"raw": "{{host}}/users/register",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"register"
@@ -178,12 +170,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/users/register",
-									"protocol": "http",
+									"raw": "{{host}}/users/register",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"register"
@@ -227,12 +217,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/login",
-							"protocol": "http",
+							"raw": "{{host}}/users/login",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"users",
 								"login"
@@ -256,12 +244,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/users/login",
-									"protocol": "http",
+									"raw": "{{host}}/users/login",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"login"
@@ -303,12 +289,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/users/login",
-									"protocol": "http",
+									"raw": "{{host}}/users/login",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"login"
@@ -350,12 +334,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/users/login",
-									"protocol": "http",
+									"raw": "{{host}}/users/login",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"login"
@@ -409,12 +391,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/update-account",
-							"protocol": "http",
+							"raw": "{{host}}/users/update-account",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"users",
 								"update-account"
@@ -438,12 +418,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/users/update-account",
-									"protocol": "http",
+									"raw": "{{host}}/users/update-account",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"update-account"
@@ -488,12 +466,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/delete-account",
-							"protocol": "http",
+							"raw": "{{host}}/users/delete-account",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"users",
 								"delete-account"
@@ -508,12 +484,10 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/users/delete-account",
-									"protocol": "http",
+									"raw": "{{host}}/users/delete-account",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"delete-account"
@@ -573,12 +547,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/categories",
-							"protocol": "http",
+							"raw": "{{host}}/categories",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"categories"
 							]
@@ -601,12 +573,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/categories",
-									"protocol": "http",
+									"raw": "{{host}}/categories",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories"
 									]
@@ -647,12 +617,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/categories",
-									"protocol": "http",
+									"raw": "{{host}}/categories",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories"
 									]
@@ -693,12 +661,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/categories",
-									"protocol": "http",
+									"raw": "{{host}}/categories",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories"
 									]
@@ -739,12 +705,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/categories",
-									"protocol": "http",
+									"raw": "{{host}}/categories",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories"
 									]
@@ -788,12 +752,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/categories",
-							"protocol": "http",
+							"raw": "{{host}}/categories",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"categories"
 							]
@@ -807,12 +769,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/categories",
-									"protocol": "http",
+									"raw": "{{host}}/categories",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories"
 									]
@@ -844,12 +804,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/categories",
-									"protocol": "http",
+									"raw": "{{host}}/categories",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories"
 									]
@@ -902,12 +860,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/categories/1",
-							"protocol": "http",
+							"raw": "{{host}}/categories/1",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"categories",
 								"1"
@@ -931,12 +887,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/categories/1",
-									"protocol": "http",
+									"raw": "{{host}}/categories/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories",
 										"1"
@@ -978,12 +932,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/categories/1",
-									"protocol": "http",
+									"raw": "{{host}}/categories/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories",
 										"1"
@@ -1028,12 +980,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/categories/1",
-							"protocol": "http",
+							"raw": "{{host}}/categories/1",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"categories",
 								"1"
@@ -1048,12 +998,10 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/categories/1",
-									"protocol": "http",
+									"raw": "{{host}}/categories/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories",
 										"1"
@@ -1086,12 +1034,10 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/categories/1",
-									"protocol": "http",
+									"raw": "{{host}}/categories/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"categories",
 										"1"
@@ -1151,12 +1097,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/tasks",
-							"protocol": "http",
+							"raw": "{{host}}/tasks",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"tasks"
 							]
@@ -1179,12 +1123,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/tasks",
-									"protocol": "http",
+									"raw": "{{host}}/tasks",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks"
 									]
@@ -1225,12 +1167,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/tasks",
-									"protocol": "http",
+									"raw": "{{host}}/tasks",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks"
 									]
@@ -1274,12 +1214,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/tasks",
-							"protocol": "http",
+							"raw": "{{host}}/tasks",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"tasks"
 							]
@@ -1293,12 +1231,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/tasks",
-									"protocol": "http",
+									"raw": "{{host}}/tasks",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks"
 									]
@@ -1351,12 +1287,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/tasks/1",
-							"protocol": "http",
+							"raw": "{{host}}/tasks/1",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"tasks",
 								"1"
@@ -1380,12 +1314,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/tasks/1",
-									"protocol": "http",
+									"raw": "{{host}}/tasks/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks",
 										"1"
@@ -1427,12 +1359,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/tasks/1",
-									"protocol": "http",
+									"raw": "{{host}}/tasks/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks",
 										"1"
@@ -1486,12 +1416,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/tasks/update-status/1",
-							"protocol": "http",
+							"raw": "{{host}}/tasks/update-status/1",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"tasks",
 								"update-status",
@@ -1516,12 +1444,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/tasks/update-status/1",
-									"protocol": "http",
+									"raw": "{{host}}/tasks/update-status/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks",
 										"update-status",
@@ -1564,12 +1490,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/tasks/update-status/1",
-									"protocol": "http",
+									"raw": "{{host}}/tasks/update-status/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks",
 										"update-status",
@@ -1624,12 +1548,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/tasks/update-category/1",
-							"protocol": "http",
+							"raw": "{{host}}/tasks/update-category/1",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"tasks",
 								"update-category",
@@ -1654,12 +1576,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/tasks/update-category/1",
-									"protocol": "http",
+									"raw": "{{host}}/tasks/update-category/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks",
 										"update-category",
@@ -1702,12 +1622,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/tasks/update-category/1",
-									"protocol": "http",
+									"raw": "{{host}}/tasks/update-category/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks",
 										"update-category",
@@ -1753,12 +1671,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/tasks/1",
-							"protocol": "http",
+							"raw": "{{host}}/tasks/1",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"tasks",
 								"1"
@@ -1773,12 +1689,10 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/tasks/1",
-									"protocol": "http",
+									"raw": "{{host}}/tasks/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks",
 										"1"
@@ -1811,12 +1725,10 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/tasks/1",
-									"protocol": "http",
+									"raw": "{{host}}/tasks/1",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"tasks",
 										"1"
