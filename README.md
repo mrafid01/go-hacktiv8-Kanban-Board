@@ -32,10 +32,14 @@ go run main.go
  ┃ ┗ 📜[user_controller.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/controller/user_controller.go)<br>
  ┣ 📂[helper](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/tree/master/helper)<br>
  ┃ ┣ 📜[error.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/helper/error.go)<br>
- ┃ ┗ 📜[response.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/helper/response.go)<br>
+ ┃ ┣ 📜[error_test.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/helper/error_test.go)<br>
+ ┃ ┣ 📜[response.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/helper/response.go)<br>
+ ┃ ┗ 📜[response_test.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/helper/response_test.go)<br>
  ┣ 📂[middleware](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/tree/master/middleware)<br>
  ┃ ┣ 📜[jwt.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/middleware/jwt.go)<br>
- ┃ ┗ 📜[middleware.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/middleware/middleware.go)<br>
+ ┃ ┣ 📜[jwt_test.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/middleware/jwt_test.go)<br>
+ ┃ ┣ 📜[middleware.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/middleware/middleware.go)<br>
+ ┃ ┗ 📜[middleware_test.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/middleware/middleware_test.go)<br>
  ┣ 📂[model](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/tree/master/model)<br>
  ┃ ┣ 📂[entity](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/tree/master/model/entity)<br>
  ┃ ┃ ┣ 📜[category.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/model/entity/category.go)<br>
@@ -58,11 +62,12 @@ go run main.go
  ┃ ┣ 📜[task_service.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/service/task_service.go)<br>
  ┃ ┗ 📜[user_service.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/service/user_service.go)<br>
  ┣ 📜[.env](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/.env)<br>
+ ┣ 📜[Hacktiv8-KanbanBoard-Kelompok-7.postman_collection.json](https://documenter.getpostman.com/view/23401248/2s8YsnYcEk)<br>
+ ┣ 📜[README.md](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/README.md)<br>
  ┣ 📜[go.mod](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/go.mod)<br>
  ┣ 📜[go.sum](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/go.sum)<br>
- ┣ 📜[Hacktiv8-KanbanBoard-Kelompok-7.postman_collection.json](https://documenter.getpostman.com/view/23401248/2s8YsnYcEk)<br>
  ┣ 📜[main.go](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/main.go)<br>
- ┗ 📜[README.md](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/README.md)<br>
+ ┗ 📜[project_environments.postman_environment.json](https://github.com/mrafid01/go-hacktiv8-Kanban-Board/blob/master/project_environments.postman_environment.json)<br>
 
 ## Postman Documentation Publish Version 🚀
 **`LINK`** 
@@ -541,3 +546,48 @@ http://localhost:8080/tasks/:taskID
 <p>1. <a href="https://github.com/alrico11"><b>Alrico Rizki Wibowo</b></a>&emsp; —&emsp;GLNG-KS04-017</p>
 <p>2. <a href="https://github.com/rickyfazaa"><b>Ricky Khairul Faza</b></a>&emsp; —&emsp;GLNG-KS04-022</p>
 <p>3. <a href="https://github.com/mrafid01"><b>Muhammad Rafid</b></a>&emsp; —&emsp;GLNG-KS04-024</p></pre>
+
+## Pembagian Tugas
+### Alrico Rizki Wibowo
+Alrico Rizki Wibowo mengerjakan beberapa hal berikut :
+- ``Endpoint``	: POST /tasks
+- ``Endpoint``	: GET /tasks
+- ``Endpoint``	: PUT /tasks/:taskId
+- ``Endpoint``	: PATCH /tasks/update-status/:taskId
+- ``Endpoint``	: PATCH /tasks/update-category/:taskId
+- ``Endpoint``	: DELETE /tasks/:taskId
+- ``Endpoint``	: POST /categories
+- ``Endpoint``	: GET /categories
+- ``Endpoint``	: PATCH /categories/:categoryId
+- ``Endpoint``	: DELETE /categories/:categoryId
+- ``Additional``	: README.md, .env, dan fix entity
+
+### Muhammad Rafid
+Muhammad Rafid mengerjakan beberapa hal berikut :
+- ``Endpoint``	: POST /users/register
+- ``Endpoint``	: POST /users/admin
+- ``Endpoint``	: POST /users/login
+- ``Endpoint``	: PUT /users/update-account
+- ``Endpoint``	: DELETE /users/delete-account
+- ``Endpoint``	: POST /tasks
+- ``Endpoint``	: GET /tasks
+- ``Endpoint``	: PUT /tasks/:taskId
+- ``Endpoint``	: PATCH /tasks/update-status/:taskId
+- ``Endpoint``	: PATCH /tasks/update-category/:taskId
+- ``Endpoint``	: DELETE /tasks/:taskId
+- ``Helper`` 	: Generate & Validate Token, Validator, Middleware, dan Unit Test
+- ``Additional``	: Deploy API
+
+### Ricky Khairul Faza
+Ricky Khairul Faza mengerjakan beberapa hal berikut :
+- ``Endpoint``	: POST /categories
+- ``Endpoint``	: GET /categories
+- ``Endpoint``	: PATCH /categories/:categoryId
+- ``Endpoint``	: DELETE /categories/:categoryId
+- ``Endpoint``	: POST /tasks
+- ``Endpoint``	: GET /tasks
+- ``Endpoint``	: PUT /tasks/:taskId
+- ``Endpoint``	: PATCH /tasks/update-status/:taskId
+- ``Endpoint``	: PATCH /tasks/update-category/:taskId
+- ``Endpoint``	: DELETE /tasks/:taskId
+- ``Additional`` 	: Postman Collection, README.md, dan db_test.go
